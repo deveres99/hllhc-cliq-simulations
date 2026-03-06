@@ -1,7 +1,7 @@
 #!/bin/bash
 
 STUDYNAME=submit_no_errors
-JOBSFILE=submit_no_errors.jobs.yaml
+JOBSFILE=no_errors.jobs.yaml
 
 ENVNAME=0.46.8
 environments=()
