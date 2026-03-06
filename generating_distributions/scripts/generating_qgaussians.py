@@ -350,7 +350,7 @@ def main():
     mode = args.mode
     q = args.q
     beta = args.beta
-    N = 100000
+    N = 1000000
     bins = 100
     plot_range = [-8, 8]
     xx = np.linspace(plot_range[0], plot_range[1], N)
@@ -441,6 +441,7 @@ def main():
         color="red", 
         label=r"$q=$" + f"{q}\n" + r"$\beta=$" + f"{beta}"
     )
+    ax10.set_yscale("log")
     ax10.set_xlabel(r"$x$ [$\sigma$]", fontsize=fs)
     ax10.set_ylabel("density", fontsize=fs)
     ax10.tick_params(axis='both', labelsize=fs-2)
@@ -460,6 +461,7 @@ def main():
         color="red", 
         label=r"$q=$" + f"{q}\n" + r"$\beta=$" + f"{beta}"
     )
+    ax11.set_yscale("log")
     ax11.set_xlabel(r"$p_x$ [$\sigma$]", fontsize=fs)
     ax11.set_ylabel("density", fontsize=fs)
     ax11.tick_params(axis='both', labelsize=fs-2)
@@ -479,6 +481,7 @@ def main():
         color="red", 
         label=r"$q=$" + f"{q}\n" + r"$\beta=$" + f"{beta}"
     )
+    ax12.set_yscale("log")
     ax12.set_xlabel(r"$y$ [$\sigma$]", fontsize=fs)
     ax12.set_ylabel("density", fontsize=fs)
     ax12.tick_params(axis='both', labelsize=fs-2)
@@ -498,6 +501,7 @@ def main():
         color="red", 
         label=r"$q=$" + f"{q}\n" + r"$\beta=$" + f"{beta}"
     )
+    ax13.set_yscale("log")
     ax13.set_xlabel(r"$p_y$ [$\sigma$]", fontsize=fs)
     ax13.set_ylabel("density", fontsize=fs)
     ax13.tick_params(axis='both', labelsize=fs-2)
@@ -505,7 +509,7 @@ def main():
 
     fig.subplots_adjust(wspace=0.5, hspace=0.3)
 
-    plt.savefig(f"./results/{mode}_q{q}_beta{beta}.png", dpi=150, format='png', bbox_inches='tight')
+    plt.savefig(f"./results/{mode}_q{q}_beta{beta}_log.png", dpi=150, format='png', bbox_inches='tight')
 
 
 if __name__ == "__main__":
