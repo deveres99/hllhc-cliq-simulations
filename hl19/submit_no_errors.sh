@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STUDYNAME=submit_no_errors
+STUDYNAME=no_errors
 JOBSFILE=no_errors.jobs.yaml
 
 ENVNAME=0.46.8
