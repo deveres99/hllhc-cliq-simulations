@@ -1,4 +1,5 @@
 import argparse
+import re
 import pickle
 import numpy as np
 from scipy.stats import chi
@@ -326,10 +327,6 @@ def track_single_batch(
         line.insert_element('tcspm.e5l7.b2_aper', missaper, index='tcspm.e5l7.b2')
         line.insert_element('tcspm.b4r7.b2_aper', missaper, index='tcspm.b4r7.b2')
 
-    # Set errors
-    if seed != 0:
-        line.vv["arc_error_seed"] = seed
-
     # Initialise colldb
     if colldb_path.endswith(".yaml"):
         colldb = xc.CollimatorDatabase.from_yaml(colldb_path, beam=beam)
@@ -579,6 +576,16 @@ def main():
     num_part = args.num_part
     num_turns = args.num_turns
     bunch_int = 2.2e11
+
+    if seed != 0 and line_path.endswith("no_errors.json"):
+        line_path = line_path.split("no_errors.json")[0] + f"seed{seed}.json"
+    elif seed != 0 and not line_path.endswith("no_errors.json") and "seed" in line_path:
+        line_path_split = re.split("seed|.json")
+        line_path_base = line_path_split[0]
+        if seed != line_path_split[1]:
+            line_path = line_path_base + f"seed{seed}.json"
+    else:
+        raise RuntimeError
 
 
     '''
