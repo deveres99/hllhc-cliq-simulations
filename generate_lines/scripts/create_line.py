@@ -49,6 +49,11 @@ parser.add_argument(
     help="HL-LHC lattice version, e.g. '16' or '19'."
 )
 parser.add_argument(
+    "subversion", 
+    type=str, 
+    help="HL-LHC lattice subversion, e.g. 'v0' or 'v3'."
+)
+parser.add_argument(
     "optics", 
     type=str, 
     help="HL-LHC optics, can be 'round' or 'flat'."
@@ -85,6 +90,7 @@ def main():
     beam = args.beam
     seed = args.seed
     version = args.version
+    subversion = args.subversion
     optics = args.optics
     i_mo = args.i_mo
     out_path = args.out_path
@@ -97,7 +103,7 @@ def main():
         CONFIG_FILE = "config_clean.yaml"
     else:
         CONFIG_FILE = "config_error.yaml"
-    MASK_FILE = f"scripts/madx/mask_all_errors_{version}_{optics}.madx"
+    MASK_FILE = f"scripts/madx/mask_all_errors_{version}_{optics}_{subversion}.madx"
 
     with open(CONFIG_FILE) as f:
         config = yaml.safe_load(f)
