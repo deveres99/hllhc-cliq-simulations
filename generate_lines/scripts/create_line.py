@@ -59,11 +59,6 @@ parser.add_argument(
     help="Octupole current in A."
 )
 parser.add_argument(
-    "ref_line_path", 
-    type=str, 
-    help="Path to reference line without errors."
-)
-parser.add_argument(
     "out_path", 
     type=str, 
     help="Output path."
@@ -92,7 +87,6 @@ def main():
     version = args.version
     optics = args.optics
     i_mo = args.i_mo
-    ref_line_path = args.ref_line_path
     out_path = args.out_path
     
 
