@@ -584,6 +584,8 @@ def main():
         line_path_base = line_path_split[0]
         if seed != line_path_split[1]:
             line_path = line_path_base + f"seed{seed}.json"
+    elif seed == 0:
+        pass
     else:
         raise RuntimeError
 
