@@ -1,4 +1,5 @@
 __pycache__
+.vscode
 hl19/studies/
 hl19/envs/
 hl19/spool/
