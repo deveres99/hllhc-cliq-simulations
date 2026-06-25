@@ -286,7 +286,7 @@ if (par_on_errors_LHC == 1) {
     call, file="modules/submodule_04e_s1_synthesize_knobs.madx";
 };
 
- Custom measured FQ errors (conditional on config switches)
+!Custom measured FQ errors (conditional on config switches)
 if (on_D2 == 1) {
     call, file="efcomp/Efcomp_MBRD_measured.madx";
 };
