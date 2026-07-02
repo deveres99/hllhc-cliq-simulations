@@ -26,20 +26,20 @@ All:
 
 families:
   # Momentum cleaning
-  - &TCP3    { <<: *ALL,  gap: 17.7,   stage: primary,    material: C,     length: 0.6,   assembly: 'lhc_tcp'}
-  - &TCSG3   { <<: *ALL,  gap: 21.3,   stage: secondary,  material: C,     length: 1,     assembly: 'lhc_tcsg'}
+  - &TCP3    { <<: *ALL,  gap: 17.7,   stage: primary,    material: CFC,     length: 0.6,   assembly: 'lhc_tcp'}
+  - &TCSG3   { <<: *ALL,  gap: 21.3,   stage: secondary,  material: CFC,     length: 1,     assembly: 'lhc_tcsg'}
   - &TCLA3   { <<: *ALL,  gap: 23.7,  stage: tertiary,   material: Iner,  length: 1,     assembly: 'lhc_tcla'}
   # Betatron cleaning
-  - &TCP7    { <<: *ALL,  gap: 8.5,   stage: primary,    material: C,     length: 0.6,   assembly: 'lhc_tcp'}
-  - &TCSG7   { <<: *ALL,  gap: 10.1,   stage: secondary,  material: C,     length: 1,     assembly: 'lhc_tcsg'}
+  - &TCP7    { <<: *ALL,  gap: 8.5,   stage: primary,    material: CFC,     length: 0.6,   assembly: 'lhc_tcp'}
+  - &TCSG7   { <<: *ALL,  gap: 10.1,   stage: secondary,  material: CFC,     length: 1,     assembly: 'lhc_tcsg'}
   - &TCLA7   { <<: *ALL,  gap: 14.0,  stage: tertiary,   material: Iner,  length: 1,     assembly: 'lhc_tcla'}
   - &CRY7    { <<: *ALL,  gap: null,  stage: special,    material: Si,    length: 0.004, side: left,  crystal: strip, active: false}
   # Injection protection
-  - &TCLI    { <<: *ALL,  gap: null,  stage: tertiary,   material: C,     length: 1,     angle: 90}
+  - &TCLI    { <<: *ALL,  gap: null,  stage: tertiary,   material: CFC,     length: 1,     angle: 90}
   - &TDI     { <<: *ALL,  gap: null,  stage: tertiary,   material: CU,    length: 1.565, angle: 90, assembly: 'lhc_tdi'}
   # Dump protection
-  - &TCDQ    { <<: *ALL,  gap: 11.1,   stage: tertiary,   material: C,     length: 3,     angle: 0,  side: left}
-  - &TCSP    { <<: *ALL,  gap: 11.1,   stage: secondary,  material: C,     length: 1,     angle: 0,  assembly: 'lhc_tcsp'}
+  - &TCDQ    { <<: *ALL,  gap: 11.1,   stage: tertiary,   material: CFC,     length: 3,     angle: 0,  side: left}
+  - &TCSP    { <<: *ALL,  gap: 11.1,   stage: secondary,  material: CFC,     length: 1,     angle: 0,  assembly: 'lhc_tcsp'}
   # Triplet protection
   - &TCT15   { <<: *ALL,  gap: 11.4,  stage: tertiary,   material: Iner,  length: 1,     parking: 0.020,     assembly: 'lhc_tct'}
   - &TCT2    { <<: *ALL,  gap: 43.8,  stage: tertiary,   material: Iner,  length: 1,     assembly: 'lhc_tct'}
@@ -94,24 +94,24 @@ collimators:
     tcp.b6l7.b1:        { <<: *TCP7,   angle: 127.5   }
     tcsg.a6l7.b1:       { <<: *TCSG7,  angle: 141.1   }
     tcpcv.a6l7.b1:      { <<: *CRY7,   angle:  90,    bend: 85.10,  xdim: 5.0e-3,  ydim: 30.0e-3,  assembly: 'hilumi_TCPCVB1'  }
-    tcspm.b5l7.b1:       { <<: *TCSG7,  angle: 143.5, material: CuGR   }
-    tcsg.b5l7.b1:       { <<: *TCSG7,  angle: 143.5   }
+    #tcspm.b5l7.b1:       { <<: *TCSG7,  angle: 143.5, material: CuGR   }
+    tcsg.b5l7.b1:       { <<: *TCSG7,  angle: 143.5, material: Be   }
     tcsg.a5l7.b1:       { <<: *TCSG7,  angle:  40.7   }
     tcsg.d4l7.b1:       { <<: *TCSG7,  angle:  90,    material: MoGR,  assembly: 'hilumi_tcspm'  }
     tcpch.a4l7.b1:      { <<: *CRY7,   angle:   0,    bend: 61.54,  xdim: 2.0e-3,  ydim: 50.0e-3,  assembly: 'hilumi_TCPCHB1'  }
-    tcsg.b4l7.b1:       { <<: *TCSG7, gap: 88.5,   angle:   0,    active: false   }
+    #tcsg.b4l7.b1:       { <<: *TCSG7, gap: 88.5,   angle:   0,    active: false   }
     tcspm.b4l7.b1:      { <<: *TCSG7,  angle:   0,    material: MoGR,  assembly: 'hilumi_tcspm'  }
-    tcspm.a4l7.b1:       { <<: *TCSG7,  angle: 134.6, material: CuGR   }
-    tcsg.a4l7.b1:       { <<: *TCSG7,  angle: 134.6   }
-    tcspm.a4r7.b1:       { <<: *TCSG7,  angle:  46.3, material: CuGR   }
-    tcsg.a4r7.b1:       { <<: *TCSG7,  angle:  46.3   }
-    tcspm.b5r7.b1:       { <<: *TCSG7,  angle: 141.5, material: CuGR   }
-    tcsg.b5r7.b1:       { <<: *TCSG7,  angle: 141.5   }
-    tcspm.d5r7.b1:       { <<: *TCSG7,  angle:  51.4, material: CuGR   }
-    tcsg.d5r7.b1:       { <<: *TCSG7,  angle:  51.4   }
-    tcsg.e5r7.b1:       { <<: *TCSG7, gap: 77.9,   angle: 130.5,  active: false   }
+    #tcspm.a4l7.b1:       { <<: *TCSG7,  angle: 134.6, material: CuGR   }
+    tcsg.a4l7.b1:       { <<: *TCSG7,  angle: 134.6, material: Be   }
+    #tcspm.a4r7.b1:       { <<: *TCSG7,  angle:  46.3, material: CuGR   }
+    tcsg.a4r7.b1:       { <<: *TCSG7,  angle:  46.3, material: Be   }
+    #tcspm.b5r7.b1:       { <<: *TCSG7,  angle: 141.5, material: CuGR   }
+    tcsg.b5r7.b1:       { <<: *TCSG7,  angle: 141.5, material: Be   }
+    #tcspm.d5r7.b1:       { <<: *TCSG7,  angle:  51.4, material: CuGR   }
+    tcsg.d5r7.b1:       { <<: *TCSG7,  angle:  51.4, material: Be   }
+    #tcsg.e5r7.b1:       { <<: *TCSG7, gap: 77.9,   angle: 130.5,  active: false   }
     tcspm.e5r7.b1:      { <<: *TCSG7,  angle: 130.5,  material: MoGR,  assembly: 'hilumi_tcspm'  }
-    tcsg.6r7.b1:        { <<: *TCSG7, gap: 60.0,   angle:   0.5,  active: false   }
+    #tcsg.6r7.b1:        { <<: *TCSG7, gap: 60.0,   angle:   0.5,  active: false   }
     tcspm.6r7.b1:       { <<: *TCSG7,  angle:   0.5,  material: MoGR,  assembly: 'hilumi_tcspm'  }
     tcla.a6r7.b1:       { <<: *TCLA7,  angle:  90     }
     tcla.b6r7.b1:       { <<: *TCLA7,  angle:   0     }
@@ -140,25 +140,25 @@ collimators:
     tcp.b6r7.b2:        { <<: *TCP7,   angle: 127.5   }
     tcsg.a6r7.b2:       { <<: *TCSG7,  angle: 141.1   }
     tcpcv.a6r7.b2:      { <<: *CRY7,   angle:  90,    bend: 74.88,  xdim: 5.0e-3,  ydim: 30.0e-3,  assembly: 'hilumi_TCPCVB2'  }
-    tcspm.b5r7.b2:       { <<: *TCSG7,  angle: 143.5, material: CuGR   }
-    tcsg.b5r7.b2:       { <<: *TCSG7,  angle: 143.5   }
+    #tcspm.b5r7.b2:       { <<: *TCSG7,  angle: 143.5, material: CuGR   }
+    tcsg.b5r7.b2:       { <<: *TCSG7,  angle: 143.5, material: Be   }
     tcsg.a5r7.b2:       { <<: *TCSG7,  angle:  40.7   }
     tcpch.a5r7.b2:      { <<: *CRY7,   angle:   0,    bend: 80.00,  xdim: 2.0e-3,  ydim: 50.0e-3,  miscut: -14.324e-3,  assembly: 'hilumi_TCPCHB2'  }
     tcsg.d4r7.b2:       { <<: *TCSG7,  angle:  90,    material: MoGR,  assembly: 'hilumi_tcspm'  }
-    tcspm.d4r7.b2:      { <<: *TCSG7,  angle:  90,    material: MoGR,  active: false,  assembly: 'hilumi_tcspmprt', jaw: 0.030  } # prototype
-    tcsg.b4r7.b2:       { <<: *TCSG7, gap: 85.0,   angle:   0,    active: false   }
+    tcspm.d4r7.b2:      { <<: *TCSG7,  angle:  90,    material: MoGR,  active: false,  assembly: 'hilumi_tcspmprt', gap: null, jaw: 0.030  } # prototype
+    #tcsg.b4r7.b2:       { <<: *TCSG7, gap: 85.0,   angle:   0,    active: false   }
     tcspm.b4r7.b2:      { <<: *TCSG7,  angle:   0,    material: MoGR,  assembly: 'hilumi_tcspm'  }
-    tcspm.a4r7.b2:       { <<: *TCSG7,  angle: 134.6, material: CuGR   }
-    tcsg.a4r7.b2:       { <<: *TCSG7,  angle: 134.6   }
-    tcspm.a4l7.b2:       { <<: *TCSG7,  angle:  46.3, material: CuGR   }
-    tcsg.a4l7.b2:       { <<: *TCSG7,  angle:  46.3   }
-    tcspm.b5l7.b2:       { <<: *TCSG7,  angle: 141.5, material: CuGR   }
-    tcsg.b5l7.b2:       { <<: *TCSG7,  angle: 141.5   }
-    tcspm.d5l7.b2:       { <<: *TCSG7,  angle:  51.4, material: CuGR   }
-    tcsg.d5l7.b2:       { <<: *TCSG7,  angle:  51.4   }
-    tcsg.e5l7.b2:       { <<: *TCSG7, gap: 77.9,   angle: 130.5,  active: false   }
+    #tcspm.a4r7.b2:       { <<: *TCSG7,  angle: 134.6, material: CuGR   }
+    tcsg.a4r7.b2:       { <<: *TCSG7,  angle: 134.6, material: Be   }
+    #tcspm.a4l7.b2:       { <<: *TCSG7,  angle:  46.3, material: CuGR   }
+    tcsg.a4l7.b2:       { <<: *TCSG7,  angle:  46.3, material: Be   }
+    #tcspm.b5l7.b2:       { <<: *TCSG7,  angle: 141.5, material: CuGR   }
+    tcsg.b5l7.b2:       { <<: *TCSG7,  angle: 141.5, material: Be   }
+    #tcspm.d5l7.b2:       { <<: *TCSG7,  angle:  51.4, material: CuGR   }
+    tcsg.d5l7.b2:       { <<: *TCSG7,  angle:  51.4, material: Be   }
+    #tcsg.e5l7.b2:       { <<: *TCSG7, gap: 77.9,   angle: 130.5,  active: false   }
     tcspm.e5l7.b2:      { <<: *TCSG7,  angle: 130.5,  material: MoGR,  assembly: 'hilumi_tcspm'  }
-    tcsg.6l7.b2:        { <<: *TCSG7, gap: 60.0,   angle:   0.5,  active: false   }
+    #tcsg.6l7.b2:        { <<: *TCSG7, gap: 60.0,   angle:   0.5,  active: false   }
     tcspm.6l7.b2:       { <<: *TCSG7,  angle:   0.5,  material: MoGR,  assembly: 'hilumi_tcspm'  }
     tcla.a6l7.b2:       { <<: *TCLA7,  angle:  90     }
     tcla.b6l7.b2:       { <<: *TCLA7,  angle:   0     }
