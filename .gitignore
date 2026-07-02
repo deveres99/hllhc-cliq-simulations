@@ -5,3 +5,4 @@ hl19/envs/
 hl19/spool/
 hl19/no_errors
 hl19/with_errors_most_critical_only
+hl19/no_errors_Q2R5_noskew
