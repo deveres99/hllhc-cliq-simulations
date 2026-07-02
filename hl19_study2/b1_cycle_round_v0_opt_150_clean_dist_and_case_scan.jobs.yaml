@@ -1,11 +1,11 @@
 mean_halo_2D:
     - runfile: scripts/track_cliq_failure.py
       args:
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
         - [data/CollDB_relaxed_150mm.yaml]
         - [1]
         - [0]
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin__init_dist_mean_2D_nemitt_design_imo_-300.pkl]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_nemitt_design_imo_-300.pkl]
         - [data/mqxfb_r5_multipole_coeff.csv]
         - [Q2R5a, Q2R1a, Q1R5a, Q1R1a, Q3R5a, Q3R1a, Q2L5a, Q2L1a, Q1L5a, Q1L1a, Q3L5a, Q3L1a, Q2R5b, Q2R1b, Q1R5b, Q1R1b, Q3R5b, Q3R1b, Q2L5b, Q2L1b, Q1L5b, Q1L1b, Q3L5b, Q3L1b]
         - [mean]
@@ -17,11 +17,11 @@ mean_halo_2D:
 mean_halo_4D:
     - runfile: scripts/track_cliq_failure.py
       args:
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
         - [data/CollDB_relaxed_150mm.yaml]
         - [1]
         - [0]
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin__init_dist_mean_4D_nemitt_design_imo_-300.pkl]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_nemitt_design_imo_-300.pkl]
         - [data/mqxfb_r5_multipole_coeff.csv]
         - [Q2R5a, Q2R1a, Q1R5a, Q1R1a, Q3R5a, Q3R1a, Q2L5a, Q2L1a, Q1L5a, Q1L1a, Q3L5a, Q3L1a, Q2R5b, Q2R1b, Q1R5b, Q1R1b, Q3R5b, Q3R1b, Q2L5b, Q2L1b, Q1L5b, Q1L1b, Q3L5b, Q3L1b]
         - [mean]
@@ -33,11 +33,11 @@ mean_halo_4D:
 cons_halo_2D:
     - runfile: scripts/track_cliq_failure.py
       args:
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
         - [data/CollDB_relaxed_150mm.yaml]
         - [1]
         - [0]
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin__init_dist_cons_2D_nemitt_design_imo_-300.pkl]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_nemitt_design_imo_-300.pkl]
         - [data/mqxfb_r5_multipole_coeff.csv]
         - [Q2R5a, Q2R1a, Q1R5a, Q1R1a, Q3R5a, Q3R1a, Q2L5a, Q2L1a, Q1L5a, Q1L1a, Q3L5a, Q3L1a, Q2R5b, Q2R1b, Q1R5b, Q1R1b, Q3R5b, Q3R1b, Q2L5b, Q2L1b, Q1L5b, Q1L1b, Q3L5b, Q3L1b]
         - [cons]
@@ -49,11 +49,11 @@ cons_halo_2D:
 cons_halo_4D:
     - runfile: scripts/track_cliq_failure.py
       args:
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
         - [data/CollDB_relaxed_150mm.yaml]
         - [1]
         - [0]
-        - [data/hllhc_b1_hl19_cycle_round_v0_opt_150_thin__init_dist_cons_4D_nemitt_design_imo_-300.pkl]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_nemitt_design_imo_-300.pkl]
         - [data/mqxfb_r5_multipole_coeff.csv]
         - [Q2R5a, Q2R1a, Q1R5a, Q1R1a, Q3R5a, Q3R1a, Q2L5a, Q2L1a, Q1L5a, Q1L1a, Q3L5a, Q3L1a, Q2R5b, Q2R1b, Q1R5b, Q1R1b, Q3R5b, Q3R1b, Q2L5b, Q2L1b, Q1L5b, Q1L1b, Q3L5b, Q3L1b]
         - [cons]
