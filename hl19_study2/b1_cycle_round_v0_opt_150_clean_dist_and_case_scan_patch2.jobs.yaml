@@ -1,0 +1,16 @@
+cons_halo_4D_8:
+    - runfile: scripts/track_cliq_failure_patch.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
+        - [data/CollDB_relaxed_150mm.yaml]
+        - [1]
+        - [0]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2L5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+        - [8]
+      num_jobs: 1
