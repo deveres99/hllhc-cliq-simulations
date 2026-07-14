@@ -1,0 +1,543 @@
+mean_halo_2D:
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed31.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [31]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed57.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [57]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed37.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [37]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed41.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [41]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed46.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [46]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed13.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [13]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed34.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [34]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed38.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [38]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+mean_halo_4D:
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed31.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [31]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed57.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [57]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed37.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [37]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed41.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [41]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed46.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [46]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed13.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [13]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed34.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [34]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed38.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [38]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+cons_halo_2D:
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed31.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [31]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed57.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [57]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed37.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [37]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed41.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [41]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed46.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [46]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed13.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [13]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed34.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [34]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed38.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [38]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+cons_halo_4D:
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed31.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [31]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed57.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [57]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed37.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [37]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed41.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [41]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed46.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [46]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed13.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [13]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed34.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [34]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
+
+    - runfile: scripts/track_cliq_failure.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed38.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [38]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [60]
+      num_jobs: 1
