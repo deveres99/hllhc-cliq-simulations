@@ -118,7 +118,7 @@ def plot_1MJ_exceeded(
     elif halo_model == "cons":
         label = rf"$q=1.5$, $\beta=1.68$ ({dist_mode})"
     else:
-        raise ValueError(f"Not supported `dist_mode` ({dist_mode})!")
+        raise ValueError(f"Not supported `halo_model` ({halo_model})!")
 
     if y_s_PDSU:
         ax.axhline(y_s_PDSU * 1e6, color="firebrick", linestyle='-.', linewidth=3)
