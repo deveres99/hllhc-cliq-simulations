@@ -841,7 +841,7 @@ def main():
         plot_collimator_names(ax12, idxs_total_1MJ_cons_4D, "cons", "4D")
         ax12.set_yticks(np.arange(len(names_total_1MJ)), labels=names_total_1MJ)
     elif halo_model != "all" and dist_mode == "all":
-        with open(result_path / f"{halo_model}_halo_2D/observables.pkl", "rb") as file:
+        with open(result_path / f"{halo_model}_halo_2D_low/observables.pkl", "rb") as file:
             obs_2D = pickle.load(file)
         with open(result_path / f"{halo_model}_halo_2D_realistic/observables_{cliq_case}.pkl", "rb") as file:
             tmp = pickle.load(file)
@@ -864,7 +864,7 @@ def main():
                 for k in obs_2D
                 if not np.isscalar(obs_2D[k])
             })
-        with open(result_path / f"{halo_model}_halo_4D/observables.pkl", "rb") as file:
+        with open(result_path / f"{halo_model}_halo_4D_low/observables.pkl", "rb") as file:
             obs_4D = pickle.load(file)
         with open(result_path / f"{halo_model}_halo_4D_realistic/observables_{cliq_case}.pkl", "rb") as file:
             tmp = pickle.load(file)
@@ -1116,7 +1116,7 @@ def main():
         plot_collimator_names(ax12, idxs_total_1MJ_4D, halo_model, "4D")
         ax12.set_yticks(np.arange(len(names_total_1MJ)), labels=names_total_1MJ)
     elif halo_model == "all" and dist_mode != "all":
-        with open(result_path / f"mean_halo_{dist_mode}/observables.pkl", "rb") as file:
+        with open(result_path / f"mean_halo_{dist_mode}_low/observables.pkl", "rb") as file:
             obs_mean = pickle.load(file)
         with open(result_path / f"mean_halo_{dist_mode}_realistic/observables_{cliq_case}.pkl", "rb") as file:
             tmp = pickle.load(file)
@@ -1139,7 +1139,7 @@ def main():
                 for k in obs_mean
                 if not np.isscalar(obs_mean[k])
             })
-        with open(result_path / f"cons_halo_{dist_mode}/observables.pkl", "rb") as file:
+        with open(result_path / f"cons_halo_{dist_mode}_low/observables.pkl", "rb") as file:
             obs_cons = pickle.load(file)
         with open(result_path / f"cons_halo_{dist_mode}_realistic/observables_{cliq_case}.pkl", "rb") as file:
             tmp = pickle.load(file)
@@ -1391,7 +1391,7 @@ def main():
         plot_collimator_names(ax12, idxs_total_1MJ_cons, "cons",dist_mode)
         ax12.set_yticks(np.arange(len(names_total_1MJ)), labels=names_total_1MJ)
     else:
-        with open(result_path / f"{halo_model}_halo_{dist_mode}/observables.pkl", "rb") as file:
+        with open(result_path / f"{halo_model}_halo_{dist_mode}_low/observables.pkl", "rb") as file:
             obs = pickle.load(file)
         with open(result_path / f"{halo_model}_halo_{dist_mode}_realistic/observables_{cliq_case}.pkl", "rb") as file:
             tmp = pickle.load(file)
