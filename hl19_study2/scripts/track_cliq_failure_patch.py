@@ -339,18 +339,6 @@ def main():
     start_batch = args.start_batch
     bunch_int = 2.3e11
 
-    if seed != 0 and "seed" not in line_path:
-        line_path = line_path.split(".json")[0] + f"_seed{seed}.json"
-    elif seed != 0 and "seed" in line_path:
-        line_path_split = re.split("seed|.json")
-        line_path_base = line_path_split[0]
-        if seed != line_path_split[1]:
-            line_path = line_path_base + f"seed{seed}.json"
-    elif seed == 0:
-        pass
-    else:
-        raise RuntimeError
-
 
     '''
     Run 10 batches
