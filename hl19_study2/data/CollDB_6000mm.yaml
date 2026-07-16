@@ -26,9 +26,9 @@ All:
 
 families:
   # Momentum cleaning
-  - &TCP3    { <<: *ALL,  gap: 17.7,   stage: primary,    material: CFC,     length: 0.6,   assembly: 'lhc_tcp'}
-  - &TCSG3   { <<: *ALL,  gap: 21.3,   stage: secondary,  material: CFC,     length: 1,     assembly: 'lhc_tcsg'}
-  - &TCLA3   { <<: *ALL,  gap: 23.7,  stage: tertiary,   material: Iner,  length: 1,     assembly: 'lhc_tcla'}
+  - &TCP3    { <<: *ALL,  gap: 9.5,   stage: primary,    material: CFC,     length: 0.6,   assembly: 'lhc_tcp'}
+  - &TCSG3   { <<: *ALL,  gap: 11.0,   stage: secondary,  material: CFC,     length: 1,     assembly: 'lhc_tcsg'}
+  - &TCLA3   { <<: *ALL,  gap: 11.8,  stage: tertiary,   material: Iner,  length: 1,     assembly: 'lhc_tcla'}
   # Betatron cleaning
   - &TCP7    { <<: *ALL,  gap: 6.7,   stage: primary,    material: CFC,     length: 0.6,   assembly: 'lhc_tcp'}
   - &TCSG7   { <<: *ALL,  gap: 7.9,   stage: secondary,  material: CFC,     length: 1,     assembly: 'lhc_tcsg'}
@@ -59,7 +59,7 @@ emittance:
 collimators:
   b1:
     tclpx.4r1.b1:       { <<: *TCLP, jaw: 0.035  }
-    tcl.5r1.b1:         { <<: *TCLP, jaw: 0.025, material: Cu  }
+    tcl.5r1.b1:         { <<: *TCLP, jaw: 0.025, material: CFC }
     tcl.6r1.b1:         { <<: *TCLP, jaw: 0.025  }
     tctph.4l2.b1:       { <<: *TCT2,   angle:   0, assembly: 'lhc_tctph'     }
     tctpv.4l2.b1:       { <<: *TCT2,   angle:  90, assembly: 'lhc_tctpv'     }
@@ -83,7 +83,7 @@ collimators:
     tctpxh.4l5.b1:      { <<: *TCT15,  angle:   0, assembly: 'hilumi_TCTPXH'     }
     tctpxv.4l5.b1:      { <<: *TCT15,  angle:  90, assembly: 'hilumi_TCTPXV'     }  
     tclpx.4r5.b1:       { <<: *TCLP, jaw: 0.035 }
-    tcl.5r5.b1:         { <<: *TCLP, jaw: 0.025, material: Cu }
+    tcl.5r5.b1:         { <<: *TCLP, jaw: 0.025, material: CFC }
     tcl.6r5.b1:         { <<: *TCLP, jaw: 0.025 }
     tcdqa.a4r6.b1:      { <<: *TCDQ,   assembly: 'lhc_tcdqnaa'                   }
     tcdqa.c4r6.b1:      { <<: *TCDQ,   assembly: 'lhc_tcdqnac'                   }
@@ -126,7 +126,7 @@ collimators:
     tctpxv.4l1.b1:       { <<: *TCT15,  angle:  90     }    
   b2:
     tclpx.4l1.b2:       { <<: *TCLP, jaw: 0.035 }
-    tcl.5l1.b2:         { <<: *TCLP, jaw: 0.025, material: Cu }
+    tcl.5l1.b2:         { <<: *TCLP, jaw: 0.025, material: CFC }
     tcl.6l1.b2:         { <<: *TCLP, jaw: 0.025 }
     tctph.4r8.b2:       { <<: *TCT8,   angle:   0     }
     tctpv.4r8.b2:       { <<: *TCT8,   angle:  90     }
@@ -174,7 +174,7 @@ collimators:
     tctpxh.4r5.b2:       { <<: *TCT15,  angle:   0     }
     tctpxv.4r5.b2:       { <<: *TCT15,  angle:  90     }   
     tclpx.4l5.b2:       { <<: *TCLP, jaw: 0.035}
-    tcl.5l5.b2:         { <<: *TCLP, jaw: 0.025, material: Cu }
+    tcl.5l5.b2:         { <<: *TCLP, jaw: 0.025, material: CFC }
     tcl.6l5.b2:         { <<: *TCLP, jaw: 0.025}
     tcp.6r3.b2:         { <<: *TCP3,   angle:   0     }
     tcsg.5r3.b2:        { <<: *TCSG3,  angle:   0     }
