@@ -1,7 +1,7 @@
 #!/bin/bash
 
-STUDYNAME=hl19_study2/submit_b1_cycle_round_v0_opt_150_tight_betabeat_Q2R5b.sh
-JOBSFILE=hl19_study2/submit_b1_cycle_round_v0_opt_150_tight_betabeat_Q2R5b.sh.jobs.yaml
+STUDYNAME=b1_cycle_round_v0_opt_150_tight_betabeat_no_coll_realign_Q2R5b
+JOBSFILE=b1_cycle_round_v0_opt_150_tight_betabeat_no_coll_realign_Q2R5b.jobs.yaml
 
 ENVNAME=0.54.2
 environments=()
