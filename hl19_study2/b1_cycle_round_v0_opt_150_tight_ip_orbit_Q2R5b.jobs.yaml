@@ -1,0 +1,79 @@
+mean_halo_2D:
+    - runfile: scripts/track_cliq_failure_no_coll_realign_ip_local_orbit_change.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [2D]
+        - [-300]
+        - [5]
+        - [-3.0, -2.50, -2.0, -1.5, -1.0, -0.5, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+        - [H, V, HV]
+        - [60]
+      num_jobs: 1
+
+mean_halo_4D:
+    - runfile: scripts/track_cliq_failure_no_coll_realign_ip_local_orbit_change.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_mean_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [mean]
+        - [4D]
+        - [-300]
+        - [5]
+        - [-3.0, -2.50, -2.0, -1.5, -1.0, -0.5, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+        - [H, V, HV]
+        - [60]
+      num_jobs: 1
+
+cons_halo_2D:
+    - runfile: scripts/track_cliq_failure_no_coll_realign_ip_local_orbit_change.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_2D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [2D]
+        - [-300]
+        - [5]
+        - [-3.0, -2.50, -2.0, -1.5, -1.0, -0.5, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+        - [H, V, HV]
+        - [60]
+      num_jobs: 1
+
+cons_halo_4D:
+    - runfile: scripts/track_cliq_failure_no_coll_realign_ip_local_orbit_change.py
+      args:
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin_arc_k1_betabeat_seed16.json]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin.json]
+        - [data/CollDB_tight_150mm.yaml]
+        - [1]
+        - [16]
+        - [data/hllhc_b1_vhl19p4_cycle_round_v0_opt_150_thin__init_dist_cons_4D_tight_nemitt_design_imo_-300.pkl]
+        - [data/mqxfb_r5_multipole_coeff.csv]
+        - [Q2R5b]
+        - [cons]
+        - [4D]
+        - [-300]
+        - [5]
+        - [-3.0, -2.50, -2.0, -1.5, -1.0, -0.5, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+        - [H, V, HV]
+        - [60]
+      num_jobs: 1
