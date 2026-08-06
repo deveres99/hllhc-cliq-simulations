@@ -47,7 +47,7 @@ parser.add_argument(
 )
 
 f_rev = 11245
-n_bunch = 2730
+n_bunch = 2760
 bunch_intensity = 2.2e11
 turn_step = 0.11245
 max_turn = 60 + 9 * turn_step
@@ -252,6 +252,53 @@ def plot_max_collimator_losses(ax, y_primary, y_total, halo_model, dist_mode):
             )
 
 
+def plot_max_collimator_losses2(ax, y_total, halo_model, dist_mode):
+    if halo_model == "mean":
+        label = rf"$q=1.3$, $\beta=0.9$ ({dist_mode})"
+    elif halo_model == "cons":
+        label = rf"$q=1.5$, $\beta=1.68$ ({dist_mode})"
+    else:
+        raise ValueError(f"Not supported `dist_mode` ({dist_mode})!")
+
+    for x, y_t in zip(x_ticks, y_total):
+        if x == 0:
+            ax.plot(
+                x, y_t, 
+                color=colors[halo_model][dist_mode], 
+                marker=markers[halo_model][dist_mode], 
+                markersize=markersize, 
+                linestyle='None', 
+                label=label
+            )
+        else:
+            ax.plot(
+                x, y_t, 
+                color=colors[halo_model][dist_mode], 
+                marker=markers[halo_model][dist_mode], 
+                markersize=markersize, 
+                linestyle='None'
+            )
+
+    # data = {
+    #     "TCP": y_TCP, 
+    #     "TCSG/TCSPM": y_TCSG_TCSPM, 
+    #     "TCL": y_TCL, 
+    #     "TCT": y_TCT
+    # }
+
+    # width = 0.13
+    # multiplier = -2
+    # colours = ["green", "orange", "blue", "red"]
+
+    # idx = 0
+    # for coll, fraction in data.items():
+    #     offset = width * multiplier
+    #     rects = ax.bar(x_ticks + offset, fraction, width, color=colours[idx], label=coll, zorder=3)
+    #     ax.bar_label(rects, padding=5, rotation=90, color='black', fontsize=fs-2, zorder=4)
+    #     multiplier += 1
+    #     idx += 1
+
+
 def plot_collimator_names(
     ax, 
     y, 
@@ -335,6 +382,30 @@ def main():
 
     # Name of collimator with maximum total losses when 1 MJ exceeded
     fig12, ax12 = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+
+    # Maximum losses on a single collimator by type at time of PDSU dump
+    fig13a, ax13a = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig13b, ax13b = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig13c, ax13c = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig13d, ax13d = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+
+    # Maximum losses on a single collimator by type at time of BLM dump
+    fig14a, ax14a = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig14b, ax14b = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig14c, ax14c = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig14d, ax14d = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+
+    # Name of collimator with maximum total losses by type at time of PDSU dump
+    fig15a, ax15a = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig15b, ax15b = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig15c, ax15c = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig15d, ax15d = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+
+    # Name of collimator with maximum total losses by type at time of BLM dump
+    fig16a, ax16a = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig16b, ax16b = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig16c, ax16c = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
+    fig16d, ax16d = plt.subplots(1, 1, figsize=(12, 6), layout="tight")
 
 
     '''
@@ -745,6 +816,356 @@ def main():
         plot_collimator_names(ax12, idxs_total_1MJ_cons_2D, "cons", "2D")
         plot_collimator_names(ax12, idxs_total_1MJ_cons_4D, "cons", "4D")
         ax12.set_yticks(np.arange(len(names_total_1MJ)), labels=names_total_1MJ)
+
+        # Maximum total losses on a single collimator by type at time of PDSU dump
+        plot_max_collimator_losses2(ax13a, obs_mean_2D["max_total_TCP_MJ_at_PDSU"], "mean", "2D")
+        plot_max_collimator_losses2(ax13a, obs_mean_4D["max_total_TCP_MJ_at_PDSU"], "mean", "4D")
+        plot_max_collimator_losses2(ax13a, obs_cons_2D["max_total_TCP_MJ_at_PDSU"], "cons", "2D")
+        plot_max_collimator_losses2(ax13a, obs_cons_4D["max_total_TCP_MJ_at_PDSU"], "cons", "4D")
+        plot_max_collimator_losses2(ax13b, obs_mean_2D["max_total_TCSG/TCSPM_MJ_at_PDSU"], "mean", "2D")
+        plot_max_collimator_losses2(ax13b, obs_mean_4D["max_total_TCSG/TCSPM_MJ_at_PDSU"], "mean", "4D")
+        plot_max_collimator_losses2(ax13b, obs_cons_2D["max_total_TCSG/TCSPM_MJ_at_PDSU"], "cons", "2D")
+        plot_max_collimator_losses2(ax13b, obs_cons_4D["max_total_TCSG/TCSPM_MJ_at_PDSU"], "cons", "4D")
+        plot_max_collimator_losses2(ax13c, obs_mean_2D["max_total_TCL_MJ_at_PDSU"], "mean", "2D")
+        plot_max_collimator_losses2(ax13c, obs_mean_4D["max_total_TCL_MJ_at_PDSU"], "mean", "4D")
+        plot_max_collimator_losses2(ax13c, obs_cons_2D["max_total_TCL_MJ_at_PDSU"], "cons", "2D")
+        plot_max_collimator_losses2(ax13c, obs_cons_4D["max_total_TCL_MJ_at_PDSU"], "cons", "4D")
+        plot_max_collimator_losses2(ax13d, obs_mean_2D["max_total_TCT_MJ_at_PDSU"], "mean", "2D")
+        plot_max_collimator_losses2(ax13d, obs_mean_4D["max_total_TCT_MJ_at_PDSU"], "mean", "4D")
+        plot_max_collimator_losses2(ax13d, obs_cons_2D["max_total_TCT_MJ_at_PDSU"], "cons", "2D")
+        plot_max_collimator_losses2(ax13d, obs_cons_4D["max_total_TCT_MJ_at_PDSU"], "cons", "4D")
+
+        # Maximum total losses on a single collimator by type at time of BLM dump
+        plot_max_collimator_losses2(ax14a, obs_mean_2D["max_total_TCP_MJ_at_BLM"], "mean", "2D")
+        plot_max_collimator_losses2(ax14a, obs_mean_4D["max_total_TCP_MJ_at_BLM"], "mean", "4D")
+        plot_max_collimator_losses2(ax14a, obs_cons_2D["max_total_TCP_MJ_at_BLM"], "cons", "2D")
+        plot_max_collimator_losses2(ax14a, obs_cons_4D["max_total_TCP_MJ_at_BLM"], "cons", "4D")
+        plot_max_collimator_losses2(ax14b, obs_mean_2D["max_total_TCSG/TCSPM_MJ_at_BLM"], "mean", "2D")
+        plot_max_collimator_losses2(ax14b, obs_mean_4D["max_total_TCSG/TCSPM_MJ_at_BLM"], "mean", "4D")
+        plot_max_collimator_losses2(ax14b, obs_cons_2D["max_total_TCSG/TCSPM_MJ_at_BLM"], "cons", "2D")
+        plot_max_collimator_losses2(ax14b, obs_cons_4D["max_total_TCSG/TCSPM_MJ_at_BLM"], "cons", "4D")
+        plot_max_collimator_losses2(ax14c, obs_mean_2D["max_total_TCL_MJ_at_BLM"], "mean", "2D")
+        plot_max_collimator_losses2(ax14c, obs_mean_4D["max_total_TCL_MJ_at_BLM"], "mean", "4D")
+        plot_max_collimator_losses2(ax14c, obs_cons_2D["max_total_TCL_MJ_at_BLM"], "cons", "2D")
+        plot_max_collimator_losses2(ax14c, obs_cons_4D["max_total_TCL_MJ_at_BLM"], "cons", "4D")
+        plot_max_collimator_losses2(ax14d, obs_mean_2D["max_total_TCT_MJ_at_BLM"], "mean", "2D")
+        plot_max_collimator_losses2(ax14d, obs_mean_4D["max_total_TCT_MJ_at_BLM"], "mean", "4D")
+        plot_max_collimator_losses2(ax14d, obs_cons_2D["max_total_TCT_MJ_at_BLM"], "cons", "2D")
+        plot_max_collimator_losses2(ax14d, obs_cons_4D["max_total_TCT_MJ_at_BLM"], "cons", "4D")
+
+        # Name of collimator with maximum total losses by type at time of PDSU dump
+        names_total_TCP_PDSU = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCP_name_at_PDSU"], 
+            obs_mean_4D["max_total_TCP_name_at_PDSU"], 
+            obs_cons_2D["max_total_TCP_name_at_PDSU"], 
+            obs_cons_4D["max_total_TCP_name_at_PDSU"], 
+        )))
+        if "" in names_total_TCP_PDSU:
+            names_total_TCP_PDSU = np.delete(names_total_TCP_PDSU, np.where(names_total_TCP_PDSU == "")[0][0])
+        idxs_total_PDSU_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCP_PDSU == obs_mean_2D["max_total_TCP_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCP_PDSU == obs_mean_4D["max_total_TCP_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCP_PDSU == obs_cons_2D["max_total_TCP_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCP_PDSU == obs_cons_4D["max_total_TCP_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax15a, idxs_total_PDSU_mean_2D, "mean", "2D")
+        plot_collimator_names(ax15a, idxs_total_PDSU_mean_4D, "mean", "4D")
+        plot_collimator_names(ax15a, idxs_total_PDSU_cons_2D, "cons", "2D")
+        plot_collimator_names(ax15a, idxs_total_PDSU_cons_4D, "cons", "4D")
+        ax15a.set_yticks(np.arange(len(names_total_TCP_PDSU)), labels=names_total_TCP_PDSU)
+
+        names_total_TCSG_TCSPM_PDSU = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCSG/TCSPM_name_at_PDSU"], 
+            obs_mean_4D["max_total_TCSG/TCSPM_name_at_PDSU"], 
+            obs_cons_2D["max_total_TCSG/TCSPM_name_at_PDSU"], 
+            obs_cons_4D["max_total_TCSG/TCSPM_name_at_PDSU"], 
+        )))
+        if "" in names_total_TCSG_TCSPM_PDSU:
+            names_total_TCSG_TCSPM_PDSU = np.delete(names_total_TCSG_TCSPM_PDSU, np.where(names_total_TCSG_TCSPM_PDSU == "")[0][0])
+        idxs_total_PDSU_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCSG_TCSPM_PDSU == obs_mean_2D["max_total_TCSG/TCSPM_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCSG_TCSPM_PDSU == obs_mean_4D["max_total_TCSG/TCSPM_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCSG_TCSPM_PDSU == obs_cons_2D["max_total_TCSG/TCSPM_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCSG_TCSPM_PDSU == obs_cons_4D["max_total_TCSG/TCSPM_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax15b, idxs_total_PDSU_mean_2D, "mean", "2D")
+        plot_collimator_names(ax15b, idxs_total_PDSU_mean_4D, "mean", "4D")
+        plot_collimator_names(ax15b, idxs_total_PDSU_cons_2D, "cons", "2D")
+        plot_collimator_names(ax15b, idxs_total_PDSU_cons_4D, "cons", "4D")
+        ax15b.set_yticks(np.arange(len(names_total_TCSG_TCSPM_PDSU)), labels=names_total_TCSG_TCSPM_PDSU)
+
+        names_total_TCL_PDSU = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCL_name_at_PDSU"], 
+            obs_mean_4D["max_total_TCL_name_at_PDSU"], 
+            obs_cons_2D["max_total_TCL_name_at_PDSU"], 
+            obs_cons_4D["max_total_TCL_name_at_PDSU"], 
+        )))
+        if "" in names_total_TCL_PDSU:
+            names_total_TCL_PDSU = np.delete(names_total_TCL_PDSU, np.where(names_total_TCL_PDSU == "")[0][0])
+        idxs_total_PDSU_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCL_PDSU == obs_mean_2D["max_total_TCL_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCL_PDSU == obs_mean_4D["max_total_TCL_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCL_PDSU == obs_cons_2D["max_total_TCL_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCL_PDSU == obs_cons_4D["max_total_TCL_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax15c, idxs_total_PDSU_mean_2D, "mean", "2D")
+        plot_collimator_names(ax15c, idxs_total_PDSU_mean_4D, "mean", "4D")
+        plot_collimator_names(ax15c, idxs_total_PDSU_cons_2D, "cons", "2D")
+        plot_collimator_names(ax15c, idxs_total_PDSU_cons_4D, "cons", "4D")
+        ax15c.set_yticks(np.arange(len(names_total_TCL_PDSU)), labels=names_total_TCL_PDSU)
+
+        names_total_TCT_PDSU = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCT_name_at_PDSU"], 
+            obs_mean_4D["max_total_TCT_name_at_PDSU"], 
+            obs_cons_2D["max_total_TCT_name_at_PDSU"], 
+            obs_cons_4D["max_total_TCT_name_at_PDSU"], 
+        )))
+        if "" in names_total_TCT_PDSU:
+            names_total_TCT_PDSU = np.delete(names_total_TCT_PDSU, np.where(names_total_TCT_PDSU == "")[0][0])
+        idxs_total_PDSU_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_PDSU_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCT_PDSU == obs_mean_2D["max_total_TCT_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCT_PDSU == obs_mean_4D["max_total_TCT_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCT_PDSU == obs_cons_2D["max_total_TCT_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCT_PDSU == obs_cons_4D["max_total_TCT_name_at_PDSU"][i])[0]
+            try:
+                idxs_total_PDSU_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax15d, idxs_total_PDSU_mean_2D, "mean", "2D")
+        plot_collimator_names(ax15d, idxs_total_PDSU_mean_4D, "mean", "4D")
+        plot_collimator_names(ax15d, idxs_total_PDSU_cons_2D, "cons", "2D")
+        plot_collimator_names(ax15d, idxs_total_PDSU_cons_4D, "cons", "4D")
+        ax15d.set_yticks(np.arange(len(names_total_TCT_PDSU)), labels=names_total_TCT_PDSU)
+
+        # Name of collimator with maximum total losses by type at time of BLM dump
+        names_total_TCP_BLM = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCP_name_at_BLM"], 
+            obs_mean_4D["max_total_TCP_name_at_BLM"], 
+            obs_cons_2D["max_total_TCP_name_at_BLM"], 
+            obs_cons_4D["max_total_TCP_name_at_BLM"], 
+        )))
+        if "" in names_total_TCP_BLM:
+            names_total_TCP_BLM = np.delete(names_total_TCP_BLM, np.where(names_total_TCP_BLM == "")[0][0])
+        idxs_total_BLM_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCP_BLM == obs_mean_2D["max_total_TCP_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCP_BLM == obs_mean_4D["max_total_TCP_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCP_BLM == obs_cons_2D["max_total_TCP_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCP_BLM == obs_cons_4D["max_total_TCP_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax16a, idxs_total_BLM_mean_2D, "mean", "2D")
+        plot_collimator_names(ax16a, idxs_total_BLM_mean_4D, "mean", "4D")
+        plot_collimator_names(ax16a, idxs_total_BLM_cons_2D, "cons", "2D")
+        plot_collimator_names(ax16a, idxs_total_BLM_cons_4D, "cons", "4D")
+        ax16a.set_yticks(np.arange(len(names_total_TCP_BLM)), labels=names_total_TCP_BLM)
+
+        names_total_TCSG_TCSPM_BLM = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCSG/TCSPM_name_at_BLM"], 
+            obs_mean_4D["max_total_TCSG/TCSPM_name_at_BLM"], 
+            obs_cons_2D["max_total_TCSG/TCSPM_name_at_BLM"], 
+            obs_cons_4D["max_total_TCSG/TCSPM_name_at_BLM"], 
+        )))
+        if "" in names_total_TCSG_TCSPM_BLM:
+            names_total_TCSG_TCSPM_BLM = np.delete(names_total_TCSG_TCSPM_BLM, np.where(names_total_TCSG_TCSPM_BLM == "")[0][0])
+        idxs_total_BLM_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCSG_TCSPM_BLM == obs_mean_2D["max_total_TCSG/TCSPM_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCSG_TCSPM_BLM == obs_mean_4D["max_total_TCSG/TCSPM_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCSG_TCSPM_BLM == obs_cons_2D["max_total_TCSG/TCSPM_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCSG_TCSPM_BLM == obs_cons_4D["max_total_TCSG/TCSPM_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax16b, idxs_total_BLM_mean_2D, "mean", "2D")
+        plot_collimator_names(ax16b, idxs_total_BLM_mean_4D, "mean", "4D")
+        plot_collimator_names(ax16b, idxs_total_BLM_cons_2D, "cons", "2D")
+        plot_collimator_names(ax16b, idxs_total_BLM_cons_4D, "cons", "4D")
+        ax16b.set_yticks(np.arange(len(names_total_TCSG_TCSPM_BLM)), labels=names_total_TCSG_TCSPM_BLM)
+
+        names_total_TCL_BLM = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCL_name_at_BLM"], 
+            obs_mean_4D["max_total_TCL_name_at_BLM"], 
+            obs_cons_2D["max_total_TCL_name_at_BLM"], 
+            obs_cons_4D["max_total_TCL_name_at_BLM"], 
+        )))
+        if "" in names_total_TCL_BLM:
+            names_total_TCL_BLM = np.delete(names_total_TCL_BLM, np.where(names_total_TCL_BLM == "")[0][0])
+        idxs_total_BLM_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCL_BLM == obs_mean_2D["max_total_TCL_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCL_BLM == obs_mean_4D["max_total_TCL_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCL_BLM == obs_cons_2D["max_total_TCL_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCL_BLM == obs_cons_4D["max_total_TCL_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax16c, idxs_total_BLM_mean_2D, "mean", "2D")
+        plot_collimator_names(ax16c, idxs_total_BLM_mean_4D, "mean", "4D")
+        plot_collimator_names(ax16c, idxs_total_BLM_cons_2D, "cons", "2D")
+        plot_collimator_names(ax16c, idxs_total_BLM_cons_4D, "cons", "4D")
+        ax16c.set_yticks(np.arange(len(names_total_TCL_BLM)), labels=names_total_TCL_BLM)
+
+        names_total_TCT_BLM = np.unique(np.hstack((
+            obs_mean_2D["max_total_TCT_name_at_BLM"], 
+            obs_mean_4D["max_total_TCT_name_at_BLM"], 
+            obs_cons_2D["max_total_TCT_name_at_BLM"], 
+            obs_cons_4D["max_total_TCT_name_at_BLM"], 
+        )))
+        if "" in names_total_TCT_BLM:
+            names_total_TCT_BLM = np.delete(names_total_TCT_BLM, np.where(names_total_TCT_BLM == "")[0][0])
+        idxs_total_BLM_mean_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_mean_4D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_2D = np.full(len(cliq_cases), np.nan)
+        idxs_total_BLM_cons_4D = np.full(len(cliq_cases), np.nan)
+        for i in range(len(cliq_cases)):
+            idx_mean_2D = np.where(names_total_TCT_BLM == obs_mean_2D["max_total_TCT_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_2D[i] = idx_mean_2D[0]
+            except IndexError:
+                pass
+            idx_mean_4D = np.where(names_total_TCT_BLM == obs_mean_4D["max_total_TCT_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_mean_4D[i] = idx_mean_4D[0]
+            except IndexError:
+                pass
+            idx_cons_2D = np.where(names_total_TCT_BLM == obs_cons_2D["max_total_TCT_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_2D[i] = idx_cons_2D[0]
+            except IndexError:
+                pass
+            idx_cons_4D = np.where(names_total_TCT_BLM == obs_cons_4D["max_total_TCT_name_at_BLM"][i])[0]
+            try:
+                idxs_total_BLM_cons_4D[i] = idx_cons_4D[0]
+            except IndexError:
+                pass
+        plot_collimator_names(ax16d, idxs_total_BLM_mean_2D, "mean", "2D")
+        plot_collimator_names(ax16d, idxs_total_BLM_mean_4D, "mean", "4D")
+        plot_collimator_names(ax16d, idxs_total_BLM_cons_2D, "cons", "2D")
+        plot_collimator_names(ax16d, idxs_total_BLM_cons_4D, "cons", "4D")
+        ax16d.set_yticks(np.arange(len(names_total_TCT_BLM)), labels=names_total_TCT_BLM)
     elif halo_model != "all" and dist_mode == "all":
         with open(result_path / f"{halo_model}_halo_2D/observables.pkl", "rb") as file:
             obs_2D = pickle.load(file)
@@ -1480,6 +1901,121 @@ def main():
     ax12.tick_params(axis="both", labelsize=fs-2)
     ax12.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
 
+    # Maximum total losses on a single collimator by type at time of PDSU dump
+    ax13a.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax13a.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax13a.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax13a.set_ylabel("max beam loss [MJ]\non single TCP\nat time of PDSU dump", fontsize=fs)
+    ax13a.tick_params(axis="both", labelsize=fs-2)
+    ax13a.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax13b.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax13b.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax13b.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax13b.set_ylabel("max beam loss [MJ]\non single TCSG/TCSPM\nat time of PDSU dump", fontsize=fs)
+    ax13b.tick_params(axis="both", labelsize=fs-2)
+    ax13b.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax13c.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax13c.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax13c.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax13c.set_ylabel("max beam loss [MJ]\non single TCL\nat time of PDSU dump", fontsize=fs)
+    ax13c.tick_params(axis="both", labelsize=fs-2)
+    ax13c.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax13d.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax13d.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax13d.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax13d.set_ylabel("max beam loss [MJ]\non single TCT\nat time of PDSU dump", fontsize=fs)
+    ax13d.tick_params(axis="both", labelsize=fs-2)
+    ax13d.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    # Maximum total losses on a single collimator by type at time of BLM dump
+    ax14a.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax14a.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax14a.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax14a.set_ylabel("max beam loss [MJ]\non single TCP\nat time of BLM dump", fontsize=fs)
+    ax14a.tick_params(axis="both", labelsize=fs-2)
+    ax14a.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax14b.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax14b.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax14b.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax14b.set_ylabel("max beam loss [MJ]\non single TCSG/TCSPM\nat time of BLM dump", fontsize=fs)
+    ax14b.tick_params(axis="both", labelsize=fs-2)
+    ax14b.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax14c.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax14c.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax14c.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax14c.set_ylabel("max beam loss [MJ]\non single TCL\nat time of BLM dump", fontsize=fs)
+    ax14c.tick_params(axis="both", labelsize=fs-2)
+    ax14c.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax14d.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax14d.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax14d.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax14d.set_ylabel("max beam loss [MJ]\non single TCT\nat time of BLM dump", fontsize=fs)
+    ax14d.tick_params(axis="both", labelsize=fs-2)
+    ax14d.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    # Name of collimator with maximum total losses by type at time of PDSU dump
+    ax15a.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax15a.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax15a.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax15a.set_ylabel("TCP with max total loss\nat time of PDSU dump", fontsize=fs)
+    ax15a.tick_params(axis="both", labelsize=fs-2)
+    ax15a.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax15b.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax15b.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax15b.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax15b.set_ylabel("TCSG/TCSPM with max total loss\nat time of PDSU dump", fontsize=fs)
+    ax15b.tick_params(axis="both", labelsize=fs-2)
+    ax15b.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax15c.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax15c.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax15c.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax15c.set_ylabel("TCL with max total loss\nat time of PDSU dump", fontsize=fs)
+    ax15c.tick_params(axis="both", labelsize=fs-2)
+    ax15c.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax15d.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax15d.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax15d.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax15d.set_ylabel("TCT with max total loss\nat time of PDSU dump", fontsize=fs)
+    ax15d.tick_params(axis="both", labelsize=fs-2)
+    ax15d.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax16a.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax16a.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax16a.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax16a.set_ylabel("TCP with max total loss\nat time of BLM dump", fontsize=fs)
+    ax16a.tick_params(axis="both", labelsize=fs-2)
+    ax16a.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax16b.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax16b.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax16b.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax16b.set_ylabel("TCSG/TCSPM with max total loss\nat time of BLM dump", fontsize=fs)
+    ax16b.tick_params(axis="both", labelsize=fs-2)
+    ax16b.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax16c.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax16c.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax16c.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax16c.set_ylabel("TCL with max total loss\nat time of BLM dump", fontsize=fs)
+    ax16c.tick_params(axis="both", labelsize=fs-2)
+    ax16c.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
+    ax16d.set_xlim(-0.5, len(cliq_cases)-0.5)
+    ax16d.set_xticks(x_ticks, labels=cliq_cases, rotation=45, ha="center")
+    ax16d.set_xlabel("magnet CLIQ fired in", fontsize=fs)
+    ax16d.set_ylabel("TCT with max total loss\nat time of BLM dump", fontsize=fs)
+    ax16d.tick_params(axis="both", labelsize=fs-2)
+    ax16d.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, fontsize=fs-2)
+
     if save:
         save_name_tag = f"{halo_model}_halo_{dist_mode}_dist"
         
@@ -1501,6 +2037,24 @@ def main():
         fig10.savefig(result_path / f"max_collimator_total_loss_name_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
         fig11.savefig(result_path / f"max_collimator_total_loss_name_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
         fig12.savefig(result_path / f"max_collimator_total_loss_name_at_1MJ_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+
+        fig13a.savefig(result_path / f"max_TCP_total_loss_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig13b.savefig(result_path / f"max_TCSG_TCSPM_total_loss_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig13c.savefig(result_path / f"max_TCL_total_loss_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig13d.savefig(result_path / f"max_TCT_total_loss_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig14a.savefig(result_path / f"max_TCP_total_loss_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig14b.savefig(result_path / f"max_TCSG_TCSPM_total_loss_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig14c.savefig(result_path / f"max_TCL_total_loss_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig14d.savefig(result_path / f"max_TCT_total_loss_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+
+        fig15a.savefig(result_path / f"max_TCP_total_loss_name_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig15b.savefig(result_path / f"max_TCSG_TCSPM_total_loss_name_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig15c.savefig(result_path / f"max_TCL_total_loss_name_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig15d.savefig(result_path / f"max_TCT_total_loss_name_at_PDSU_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig16a.savefig(result_path / f"max_TCP_total_loss_name_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig16b.savefig(result_path / f"max_TCSG_TCSPM_total_loss_name_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig16c.savefig(result_path / f"max_TCL_total_loss_name_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
+        fig16d.savefig(result_path / f"max_TCT_total_loss_name_at_BLM_{save_name_tag}.png", dpi=150, format='png', bbox_inches='tight')
 
     if show:
         plt.show()
