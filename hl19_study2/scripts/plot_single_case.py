@@ -71,7 +71,7 @@ parser.add_argument(
 
 
 f_rev = 11245
-n_bunch = 2730
+n_bunch = 2760
 bunch_intensity = 2.2e11
 turn_step = 0.11245
 max_turn = 60 + 9 * turn_step
@@ -242,7 +242,7 @@ def main():
     ax1.axvline(120, color="black", linestyle=':', linewidth=3)
     ax1.text(
         115, 1.99, 
-        "PSDU interlock", 
+        "PDSU interlock", 
         fontsize=fs-8, 
         rotation="vertical", 
         ha="right", 
@@ -405,7 +405,7 @@ def main():
     ax2.axvline(120, color="black", linestyle=':', linewidth=3)
     ax2.text(
         115, 99, 
-        "PSDU interlock", 
+        "PDSU interlock", 
         fontsize=fs-8, 
         rotation="vertical", 
         ha="right", 
