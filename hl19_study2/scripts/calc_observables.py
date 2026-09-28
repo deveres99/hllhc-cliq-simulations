@@ -30,6 +30,11 @@ parser.add_argument(
     help="either 'all' or list of cases separated by a comma as one string"
 )
 parser.add_argument(
+    "seed", 
+    type=int, 
+    help="random error seed used to produce result file"
+)
+parser.add_argument(
     "line_path", 
     type=str, 
     help="xsuite line path"
@@ -37,13 +42,13 @@ parser.add_argument(
 
 
 f_rev = 11245
-n_bunch = 2730
+n_bunch = 2760
 bunch_intensity = 2.2e11
 turn_step = 0.11245
 max_turn = 60 + 9 * turn_step
 charge = 1.60218e-19
 
-cliq_cases = [
+cliq_cases_ = [
     'Q1R5a', 'Q1R5b', 'Q1L5a', 'Q1L5b', 
     'Q2R5a', 'Q2R5b', 'Q2L5a', 'Q2L5b', 
     'Q3R5a', 'Q3R5b', 'Q3L5a', 'Q3L5b', 
@@ -67,13 +72,16 @@ def main():
     study_name = args.study_name
     requested_cliq_cases = args.cliq_cases
     line_path = args.line_path
+    seed = args.seed
 
     if requested_cliq_cases != "all":
         cliq_cases = requested_cliq_cases.split(',')
+    else:
+        cliq_cases = cliq_cases_
 
     result_path = Path(result_path).resolve() / study_name
 
-    all_files_ = sorted(list(result_path.glob(f"part_fin*.pkl")))
+    all_files_ = sorted(list(result_path.glob(f"part_fin_seed{seed}*.pkl")))
     idxs = []
     all_files = []
     for filename in all_files_:
@@ -118,6 +126,22 @@ def main():
         "max_total_coll_MJ_at_1MJ": np.full(len(cliq_cases), np.nan, dtype=float), 
         "max_primary_coll_name_at_1MJ": np.full(len(cliq_cases), "", dtype="U40"), 
         "max_total_coll_name_at_1MJ": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCP_MJ_at_PDSU": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCSG/TCSPM_MJ_at_PDSU": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCL_MJ_at_PDSU": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCT_MJ_at_PDSU": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCP_name_at_PDSU": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCSG/TCSPM_name_at_PDSU": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCL_name_at_PDSU": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCT_name_at_PDSU": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCP_MJ_at_BLM": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCSG/TCSPM_MJ_at_BLM": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCL_MJ_at_BLM": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCT_MJ_at_BLM": np.full(len(cliq_cases), np.nan, dtype=float), 
+        "max_total_TCP_name_at_BLM": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCSG/TCSPM_name_at_BLM": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCL_name_at_BLM": np.full(len(cliq_cases), "", dtype="U40"), 
+        "max_total_TCT_name_at_BLM": np.full(len(cliq_cases), "", dtype="U40"), 
     }
 
     
@@ -136,7 +160,10 @@ def main():
     with open("data/lhc_collimation_metadata.json", "r") as file:
         metadata = json.load(file)
 
-    colldb = xc.CollimatorDatabase.from_yaml("data/CollDB_tight_150mm.yaml", beam=beam)
+    if "tight" in study_name:
+        colldb = xc.CollimatorDatabase.from_yaml("data/CollDB_tight_150mm.yaml", beam=beam)
+    else:
+        colldb = xc.CollimatorDatabase.from_yaml("data/CollDB_relaxed_150mm.yaml", beam=beam)
     colldb.install_everest_collimators(line=line, verbose=True)
     tw = line.twiss()
     line.xcoll.collimators.assign_optics(twiss=tw)
@@ -242,6 +269,45 @@ def main():
             final_results["max_total_coll_MJ_at_PDSU"][idx] = max_total_coll_MJ_at_PDSU * 1e-6
             max_total_coll_name_at_PDSU = lm_PDSU["collimator"]["name"][idx_max_total_coll_MJ_at_PDSU]
             final_results["max_total_coll_name_at_PDSU"][idx] = max_total_coll_name_at_PDSU
+
+            curr_TCP_e = []
+            curr_TCP_name = []
+            curr_TCSG_TCSPM_e = []
+            curr_TCSG_TCSPM_name = []
+            curr_TCL_e = []
+            curr_TCL_name = []
+            curr_TCT_e = []
+            curr_TCT_name = []
+            for name, e in zip(lm_PDSU["collimator"]["name"], lm_PDSU["collimator"]["e"]):
+                if name.startswith("tcp."):
+                    curr_TCP_name.append(name)
+                    curr_TCP_e.append(e)
+                elif name.startswith("tcsg.") or name.startswith("tcspm."):
+                    curr_TCSG_TCSPM_name.append(name)
+                    curr_TCSG_TCSPM_e.append(e)
+                elif name.startswith("tcl"):
+                    curr_TCL_name.append(name)
+                    curr_TCL_e.append(e)
+                elif name.startswith("tct"):
+                    curr_TCT_name.append(name)
+                    curr_TCT_e.append(e)
+
+            if len(curr_TCP_e) > 0:
+                idx_TCP = np.argmax(curr_TCP_e)
+                final_results["max_total_TCP_MJ_at_PDSU"][idx] = curr_TCP_e[idx_TCP] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                final_results["max_total_TCP_name_at_PDSU"][idx] = curr_TCP_name[idx_TCP]
+            if len(curr_TCSG_TCSPM_e) > 0:
+                idx_TCSG_TCSPM = np.argmax(curr_TCSG_TCSPM_e)
+                final_results["max_total_TCSG/TCSPM_MJ_at_PDSU"][idx] = curr_TCSG_TCSPM_e[idx_TCSG_TCSPM] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                final_results["max_total_TCSG/TCSPM_name_at_PDSU"][idx] = curr_TCSG_TCSPM_name[idx_TCSG_TCSPM]
+            if len(curr_TCL_e) > 0 :
+                idx_TCL = np.argmax(curr_TCL_e)
+                final_results["max_total_TCL_MJ_at_PDSU"][idx] = curr_TCL_e[idx_TCL] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                final_results["max_total_TCL_name_at_PDSU"][idx] = curr_TCL_name[idx_TCL]
+            if len(curr_TCT_e) > 0:
+                idx_TCT = np.argmax(curr_TCT_e)
+                final_results["max_total_TCT_MJ_at_PDSU"][idx] = curr_TCT_e[idx_TCT] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                final_results["max_total_TCT_name_at_PDSU"][idx] = curr_TCT_name[idx_TCT]
         except KeyError:
             pass
 
@@ -270,6 +336,45 @@ def main():
                 final_results["max_total_coll_MJ_at_BLM"][idx] = max_total_coll_MJ_at_BLM * 1e-6
                 max_total_coll_name_at_BLM = lm_BLM["collimator"]["name"][idx_max_total_coll_MJ_at_BLM]
                 final_results["max_total_coll_name_at_BLM"][idx] = max_total_coll_name_at_BLM
+
+                curr_TCP_e = []
+                curr_TCP_name = []
+                curr_TCSG_TCSPM_e = []
+                curr_TCSG_TCSPM_name = []
+                curr_TCL_e = []
+                curr_TCL_name = []
+                curr_TCT_e = []
+                curr_TCT_name = []
+                for name, e in zip(lm_BLM["collimator"]["name"], lm_BLM["collimator"]["e"]):
+                    if name.startswith("tcp."):
+                        curr_TCP_name.append(name)
+                        curr_TCP_e.append(e)
+                    elif name.startswith("tcsg.") or name.startswith("tcspm."):
+                        curr_TCSG_TCSPM_name.append(name)
+                        curr_TCSG_TCSPM_e.append(e)
+                    elif name.startswith("tcl"):
+                        curr_TCL_name.append(name)
+                        curr_TCL_e.append(e)
+                    elif name.startswith("tct"):
+                        curr_TCT_name.append(name)
+                        curr_TCT_e.append(e)
+    
+                if len(curr_TCP_e) > 0:
+                    idx_TCP = np.argmax(curr_TCP_e)
+                    final_results["max_total_TCP_MJ_at_BLM"][idx] = curr_TCP_e[idx_TCP] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                    final_results["max_total_TCP_name_at_BLM"][idx] = curr_TCP_name[idx_TCP]
+                if len(curr_TCSG_TCSPM_e) > 0:
+                    idx_TCSG_TCSPM = np.argmax(curr_TCSG_TCSPM_e)
+                    final_results["max_total_TCSG/TCSPM_MJ_at_BLM"][idx] = curr_TCSG_TCSPM_e[idx_TCSG_TCSPM] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                    final_results["max_total_TCSG/TCSPM_name_at_BLM"][idx] = curr_TCSG_TCSPM_name[idx_TCSG_TCSPM]
+                if len(curr_TCL_e) > 0 :
+                    idx_TCL = np.argmax(curr_TCL_e)
+                    final_results["max_total_TCL_MJ_at_BLM"][idx] = curr_TCL_e[idx_TCL] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                    final_results["max_total_TCL_name_at_BLM"][idx] = curr_TCL_name[idx_TCL]
+                if len(curr_TCT_e) > 0:
+                    idx_TCT = np.argmax(curr_TCT_e)
+                    final_results["max_total_TCT_MJ_at_BLM"][idx] = curr_TCT_e[idx_TCT] / num_part * bunch_intensity * n_bunch * charge * 1e-6
+                    final_results["max_total_TCT_name_at_BLM"][idx] = curr_TCT_name[idx_TCT]
             except KeyError:
                 pass
 
@@ -301,7 +406,16 @@ def main():
             except KeyError:
                 pass
 
-    save_name = "observables.pkl" if requested_cliq_cases == "all" else f"observables_{requested_cliq_cases}.pkl"
+    if requested_cliq_cases == "all":
+        if seed != 0:
+            save_name = f"observables_seed{seed}.pkl"
+        else:
+            save_name = "observables.pkl"
+    else:
+        if seed != 0:
+            save_name = f"observables_{requested_cliq_cases}_seed{seed}.pkl"
+        else:
+            save_name = f"observables_{requested_cliq_cases}.pkl"
     with open(result_path / save_name, "wb") as file:
         pickle.dump(final_results, file)
 
